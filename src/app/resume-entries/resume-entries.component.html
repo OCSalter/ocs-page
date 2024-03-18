@@ -1,0 +1,11 @@
+<ul class="resumeEntries">
+    <li *ngFor="let entry of entries">
+        <span>{{entry.title}}, </span>
+        <span>{{entry.group}}</span>
+        <ul class="entryPoints">
+            <li *ngFor ="let point of entry.points">
+                <span>{{point}}</span>
+            </li>
+        </ul>
+    </li>
+</ul>
