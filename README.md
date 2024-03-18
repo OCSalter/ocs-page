@@ -1,2 +1,1 @@
-# ocs-page
-Hiiiii    welcome to my page~   :3
+Hiiiii welcome to my page~ :3
