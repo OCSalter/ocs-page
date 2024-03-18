@@ -1,4 +1,4 @@
-export interface resumeEntry{
+export interface ResumeEntry{
     title: string,
     group: string,
     points: string[],

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 
-
-import { resumeEntry } from './resume-entry';
+import { ResumeEntry } from './resume-entry';
+import { ResumeEntryService } from '../resume-entry.service';
 
 @Component({
   selector: 'app-resume-entries',
@@ -11,9 +11,17 @@ import { resumeEntry } from './resume-entry';
   standalone: true,
   imports:[NgFor,],
 })
-export class ResumeEntriesComponent {
-  entries: resumeEntry[] = [
-    {title: "Gamer", group: "gamers", points:["gamed real hard", "its true"],location: "my room", date:"all day, all year"},
-    {title: "Gamer", group: "gamerz", points:["gamed really hard", "its true"],location: "everywhere", date:"all day, all year"},
-  ];
+
+export class ResumeEntriesComponent implements OnInit {
+  entries: ResumeEntry[] = [];
+
+  constructor(private resumeEntryService: ResumeEntryService) {}
+
+  ngOnInit(): void {
+    this.getEntries();
+  }
+
+  getEntries(): void{
+    this.resumeEntryService.getEntries().subscribe(_ => this.entries = _);
+  }
 }
