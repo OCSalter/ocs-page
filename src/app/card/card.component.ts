@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
+  @Output() clickedEvent = new EventEmitter<void>();
 
+  onClick(): void { this.clickedEvent.emit() }
 }
