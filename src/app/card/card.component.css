@@ -1,0 +1,27 @@
+.card{
+    aspect-ratio: 1/1.6;
+    border: 0.5vmin solid var(--border);
+    cursor: pointer;
+    position: relative;
+    width: 56vmin;
+}
+
+.card:before{
+    background: linear-gradient(130deg, transparent 0% 45%,#161616 66%);
+    content:"";
+    background-position: 0% 0%;
+    background-size: 300% 300%;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    transition: background-position 330ms ease;
+    width: 100%;
+    z-index: 1;
+}
+
+.card:hover:before{
+   background-position: 100% 100%; 
+   transform: scale(1.08, 1.03);
+}
+

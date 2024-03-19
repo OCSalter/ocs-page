@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ResumeEntriesComponent } from './resume-entries/resume-entries.component';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AboutMeComponent,
+    CardComponent,
     
   ],
   imports: [
