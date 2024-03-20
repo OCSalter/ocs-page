@@ -12,6 +12,7 @@ export class LandingPageComponent implements OnInit {
   private MOCK_HEADER: string = "HIIIIIIIIiii ! >_< how are you ?";
   private MOCK_BODY: string = "Welcome to my website ! Hope you like it here :3";
 
+  image = 'assets/flwr.png';
   i: number = 0;
 
   ngOnInit(): void {

@@ -1,3 +1,4 @@
+
 h1 {
     font-size: 5em;
     color: #FB62F6;
@@ -9,7 +10,6 @@ h2 {
     color: #FB62F6;
     text-transform: uppercase;
 }
-
 
 .caret {
     border-right: .05em solid;

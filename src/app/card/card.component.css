@@ -2,7 +2,7 @@
     aspect-ratio: 1/1.6;
     cursor: pointer;
     position: relative;
-    width: 50vmin;
+    width: 55vmin;
     pointer-events: none; 
 }
 
@@ -15,19 +15,62 @@
     left: 0px;
     position: absolute;
     top: 0px;
-    transition: background-position 400ms ease;
+    transition: background-position 400ms;
     width: 100%;
     z-index: 1;
 }
 
 .card:hover:before{
-   background-position: 100% 100%; 
+   background-position: 100% 100%;
 }
 
+.card-content{
+    background: radial-gradient(
+        rgba(255, 255, 255, 0.2) 8%,
+        transparent 8%
+    );
+    background-position: 0% 0%;
+    background-size: 5vmin 5vmin;
+    height:calc(100% - 10vmin);
+    padding: 5vmin;
+    position: relative;
+    transition: background-position 350ms ease;
+    width: calc(100% - 10vmin);
+    z-index: 2; 
+    ;
+}
 
 .card-button{
     background: transparent;
     pointer-events: auto; 
+    text-align:left;
     height: 100%;
     width: 100%;
+    top: 8px;
+}
+
+.card-title,
+.card-subtitle {
+    font-weight: 400;
+    margin: 0px;
+    transition: color 300ms ease;
+    text-transform: lowercase;
+}
+
+.card-title{
+    color: #FB62F6;
+    font-size: 10vmin;
+}
+.card-subtitle{
+    color:  white;
+    font-size: 3vmin;
+    margin-top: 2vmin;
+}
+
+.card:hover > .card-content {
+    background-position: -10% 0;
+}
+
+.card-button:hover > .card-title {
+    color:white;
 }
