@@ -1,35 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { CardComponent } from '../card/card.component';
+import { Observable, interval, map } from 'rxjs';
+
+import { Queue } from '../structures';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent implements OnInit{
-  private MOCK_HEADER: string = "HIIIII how are you?";
-  private MOCK_BODY: string = "Welcome to my website!";
+export class LandingPageComponent implements OnInit {
+  private MOCK_HEADER: string = "HIIIIIIIIiii... how are you?";
+  private MOCK_BODY: string = "Welcome to my website! Hope you like it here!!!";
 
-  header: string[] = [];
-  body: string[] = [];
-
-  displayHeader: string = "";
-  displayBody: string = "";
+  i: number = 0;
 
   ngOnInit(): void {
-    this.header = this.MOCK_HEADER.split(" ").reverse();
-    this.body = this.MOCK_BODY.split(" ").reverse();
+
   }
 
-  public addPageText(): void{
-    if(this.header.length){
-      this.displayHeader += this.header[this.header.length-1] + " ";
-      this.header.pop();
+  public playEffect(): void {
+    if(this.i == 0) {
+      this.typeText("lh1", this.MOCK_HEADER, 120);
+      
     }
-    else if(this.body.length){
-      this.displayBody += this.body[this.body.length-1] + " ";
-      this.body.pop();
+    else if(this.i == 1) {
+      this.typeText("lh2", this.MOCK_BODY, 82);
+    }
+    this.i++;
+  }
+
+  private typeText(outputId: string, toType: string, period: number = 50): void {
+    var outputText: string = "";
+    const typingSubscription = this.generateTextStream(toType, period)
+    .subscribe( _ => {
+      if(_) { 
+        outputText += _ ;
+      }
+      else { typingSubscription.unsubscribe(); }
+      this.updateElementTextById(outputId, outputText);
+    });
+  }
+
+  private generateTextStream(text: string, period: number): Observable<string | undefined> {
+    const q: Queue<string> = new Queue<string>(text.split(""));
+    return interval(period).pipe(
+      map( _ => q.pop() )
+    );
+  }
+
+  private updateElementTextById(id: string, text: string, carrot: boolean = false): void {
+    const element = document.getElementById(id);
+    if(element) {
+      element.innerHTML = "<span aria-hidden='true' class = 'caret'>"+ text +"</span>";
     }
   }
 }
-  

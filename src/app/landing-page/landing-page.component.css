@@ -1,0 +1,23 @@
+h1 {
+    font-size: 5em;
+    color: #FB62F6;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 3em;
+    color: #FB62F6;
+    text-transform: uppercase;
+}
+
+
+.caret {
+    border-right: .05em solid;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}

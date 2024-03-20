@@ -2,12 +2,12 @@
     aspect-ratio: 1/1.6;
     cursor: pointer;
     position: relative;
-    width: 56vmin;
+    width: 50vmin;
     pointer-events: none; 
 }
 
 .card:before{
-    background: linear-gradient(130deg, transparent 0% 45%,#161616 66%);
+    background: linear-gradient(130deg, transparent 0% 45%,#FB62F6 66%);
     content:"";
     background-position: 0% 0%;
     background-size: 300% 300%;
@@ -15,14 +15,13 @@
     left: 0px;
     position: absolute;
     top: 0px;
-    transition: background-position 330ms ease;
+    transition: background-position 400ms ease;
     width: 100%;
     z-index: 1;
 }
 
 .card:hover:before{
    background-position: 100% 100%; 
-   transform: scale(1.08, 1.03);
 }
 
 

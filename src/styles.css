@@ -5,7 +5,7 @@ h1 {
     font-size: 250%;
   }
   h2, h3 {
-    color: #444;
+    color: #0A0903;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
   }
@@ -53,3 +53,19 @@ h1 {
     display: table;
     clear: both;
   }
+
+  html{
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+  .caret {
+    border-right: .05em solid;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
