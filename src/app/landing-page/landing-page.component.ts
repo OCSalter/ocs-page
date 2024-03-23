@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, interval, map } from 'rxjs';
 
 import { Queue } from '../structures';
 import { HttpClient } from '@angular/common/http';
 
 import { TextTyper } from '../IO/TextTyper';
 import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
+import { Paragraph } from '../Paragraph';
+import { CardArgs } from '../card/card.component';
+import { generateFaces } from './Faces';
 
 
 @Component({
@@ -14,9 +16,19 @@ import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent implements OnInit {
-  private LANDING_TEXT_URL = "api/landingText";
+
+  private LANDING_TEXT_URL = "api/paragraphs/landing";
+
+  public cardArgs: CardArgs = {
+    width: 50,
+    aspectRatio: (1/1.6),
+    titleSize: 9,
+    subtitleSize: 3,
+    titleText: "click: me",
+    subtitleText: "",
+  };
   
-  private effects: Queue<TextTyper> = new Queue();
+  private effectList: Queue<TextTyper> = new Queue();
   private previousEffect?: TextTyper;
   
   private htmlIDMap = new Map<string, string>([
@@ -32,26 +44,27 @@ export class LandingPageComponent implements OnInit {
   }
 
   private generateEffects(): void {
-    const text = this.http.get<any>(this.LANDING_TEXT_URL);
+    const text = this.http.get<Paragraph>(this.LANDING_TEXT_URL);
     text.subscribe( _ => {
-      this.generateTypingEffects(_[0]);
+      this.generateTypingEffects(_);
     });
   }
 
   public playEffect(): void {
-    const _effect = this.effects.pop(); 
-    if(_effect){
+    const effect = this.effectList.pop(); 
+    if(effect){
       this.previousEffect?.nextStarted();
-      const id = this.htmlIDMap.get(_effect.getID());
+      const id = this.htmlIDMap.get(effect.getID());
       if(id){
-        _effect.start(new InnerHTMLWriter(document.getElementById(id)));
+        effect.start(new InnerHTMLWriter(document.getElementById(id)));
       }
     }
-   this.previousEffect = _effect;
+   this.previousEffect = effect;
   }
   
   private generateTypingEffects(data: any): void {
-    this.effects.add(new TextTyper(data.header, 91, "header"));
-    this.effects.add(new TextTyper(data.body, 82, "body"));
+    this.effectList.add(new TextTyper(data.header, 91, "header"));
+    this.effectList.add(new TextTyper(data.body, 82, "body"));
   }
+
 }

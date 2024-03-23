@@ -1,4 +1,8 @@
 <nav>
-    <a routerLink="/AboutMe">About Me </a>
-    <a routerLink="/Resume">Resume </a>
+    <ul>
+        <li><img class="icon" src="assets\flwr.png" width="{{imageScale}}" height="{{imageScale}}" routerLink="/Home"></li>
+        <li *ngFor="let headerLink of headerLinkList">
+            <app-card [args]="headerLink.cardArgs" routerLink="{{headerLink.route}}"></app-card>
+        </li>
+    </ul>
 </nav>

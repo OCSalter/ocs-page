@@ -1,12 +1,17 @@
 
 h1 {
-    font-size: 5em;
+    font-size: 9vmin;
     color: #FB62F6;
     text-transform: uppercase;
 }
 
 h2 {
-    font-size: 3em;
+    font-size: 6vmin;
     color: #FB62F6;
     text-transform: uppercase;
+}
+
+h3{
+    font-size: 2vmin;
+    color: #FB62F6;
 }

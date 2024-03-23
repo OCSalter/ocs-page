@@ -3,9 +3,10 @@
     <div class="column">
         <h1 id="Landing_Header"><span class = 'bar'></span></h1>
         <h2 id="Landing_Body"></h2>
+        <h3 id="Landing_Sub"></h3>
     </div>
     <div class="column">
-        <app-card (clickedEvent)="playEffect()"></app-card>
+        <app-card (clickedEvent)="playEffect()" [args]="cardArgs"></app-card>
     </div>
 </div>    
 
