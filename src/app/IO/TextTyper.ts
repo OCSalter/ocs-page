@@ -3,7 +3,6 @@ import { Queue } from "../structures";
 import { Writer } from "./Writer";
 
 export class TextTyper{
-
     private outputText: string = "";
 
     private typingSubscription?: Subscription;
@@ -22,7 +21,7 @@ export class TextTyper{
 
     public nextStarted() {
         this.notCurrent = true;
-        if(this.finished){
+        if(this.finished) {
             this.output(this.src, false);
         }
     }
@@ -40,7 +39,7 @@ export class TextTyper{
 
     private beginTyping(stream: Observable<string | undefined>): void {
         this.typingSubscription = stream.subscribe( _ => {
-            if(_) { 
+            if(_) {
               this.outputText += _ ;
               this.output(this.outputText, true);
             }

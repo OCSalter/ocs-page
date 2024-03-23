@@ -2,6 +2,7 @@ import { ResumeEntry } from "./resume-entries/resume-entry";
 
 export const MOCK_RESUME_ENTRIES: ResumeEntry[] = [
     {
+      id:"1",
       title: "Front-End Dart Software Developer", 
       group: "Duang", 
       location: "Toronto, Ontario", 
@@ -13,6 +14,7 @@ export const MOCK_RESUME_ENTRIES: ResumeEntry[] = [
       ],
     },
     {
+      id:"2",
       title: "Full-Stack Software Engineer", 
       group: "Garner Distributed Workflow", 
       location: "Toronto, Ontario", 
@@ -24,6 +26,7 @@ export const MOCK_RESUME_ENTRIES: ResumeEntry[] = [
       ],
     },
     {
+      id:"3",
       title: "Research Intern", 
       group: "Kepstrum", 
       location: "Vaughan, Ontario", 

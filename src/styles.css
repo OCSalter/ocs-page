@@ -46,10 +46,7 @@ h1 {
     float: left;
     width: 50%;
   }
-  
-  /* Clear floats after the columns */
   .row:after {
-    background-size: 300%, 300%;
     content: "";
     display: table;
     clear: both;
