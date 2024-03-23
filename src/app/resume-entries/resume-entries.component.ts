@@ -21,7 +21,7 @@ export class ResumeEntriesComponent implements OnInit {
     this.getEntries();
   }
 
-  getEntries(): void{
-    this.resumeEntryService.getEntries().subscribe(_ => this.entries = _);
+  getEntries(): void {
+    this.resumeEntryService.getEntries().subscribe( _ => this.entries = _);
   }
 }
