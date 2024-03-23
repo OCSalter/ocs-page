@@ -60,12 +60,12 @@ h1 {
     overflow: hidden;
   }
 
-  .caret {
+  .bar {
     border-right: .05em solid;
-    animation: caret 1s steps(1) infinite;
+    animation: bar 1s steps(1) infinite;
 }
 
-@keyframes caret {
+@keyframes bar {
     50% {
         border-color: transparent;
     }

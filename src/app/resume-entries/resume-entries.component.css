@@ -1,0 +1,18 @@
+.job-title{
+    font-size: 2em;
+}
+.job-group{
+    font-size: 1.5em;
+    font-style: italic;
+}
+.job-date{
+    font-size: 1.5em;
+
+}
+.job-location{
+    font-size: 1.5em;
+    font-style: italic;
+}
+.job-point{
+    font-size: 1.3em;
+}
