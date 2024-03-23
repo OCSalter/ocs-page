@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, interval, map } from 'rxjs';
 
 import { Queue } from '../structures';
+import { HttpClient } from '@angular/common/http';
+
+import { TextTyper } from '../IO/TextTyper';
+import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -9,50 +14,44 @@ import { Queue } from '../structures';
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent implements OnInit {
-  private MOCK_HEADER: string = "HIIIIIIIIiii ! >_< how are you ?";
-  private MOCK_BODY: string = "Welcome to my website ! Hope you like it here :3";
+  private LANDING_TEXT_URL = "api/landingText";
+  
+  private effects: Queue<TextTyper> = new Queue();
+  private previousEffect?: TextTyper;
+  
+  private htmlIDMap = new Map<string, string>([
+      ["header","Landing_Header"],
+      ["body","Landing_Body"],
+      ["sub","Landing_Sub"],
+  ]);
 
-  image = 'assets/flwr.png';
-  i: number = 0;
+  constructor( private http: HttpClient, ) { }
 
   ngOnInit(): void {
-
+    this.generateEffects();
   }
 
-  public playEffect(): void {
-    if(this.i == 0) {
-      this.typeText("lh1", this.MOCK_HEADER, 120);
-      
-    }
-    else if(this.i == 1) {
-      this.typeText("lh2", this.MOCK_BODY, 82);
-    }
-    this.i++;
-  }
-
-  private typeText(outputId: string, toType: string, period: number = 50): void {
-    var outputText: string = "";
-    const typingSubscription = this.generateTextStream(toType, period)
-    .subscribe( _ => {
-      if(_) { 
-        outputText += _ ;
-      }
-      else { typingSubscription.unsubscribe(); }
-      this.updateElementTextById(outputId, outputText);
+  private generateEffects(): void {
+    const text = this.http.get<any>(this.LANDING_TEXT_URL);
+    text.subscribe( _ => {
+      this.generateTypingEffects(_[0]);
     });
   }
 
-  private generateTextStream(text: string, period: number): Observable<string | undefined> {
-    const q: Queue<string> = new Queue<string>(text.split(""));
-    return interval(period).pipe(
-      map( _ => q.pop() )
-    );
-  }
-
-  private updateElementTextById(id: string, text: string, carrot: boolean = false): void {
-    const element = document.getElementById(id);
-    if(element) {
-      element.innerHTML = "<span aria-hidden='true' class = 'caret'>"+ text +"</span>";
+  public playEffect(): void {
+    const _effect = this.effects.pop(); 
+    if(_effect){
+      this.previousEffect?.nextStarted();
+      const id = this.htmlIDMap.get(_effect.getID());
+      if(id){
+        _effect.start(new InnerHTMLWriter(document.getElementById(id)));
+      }
     }
+   this.previousEffect = _effect;
+  }
+  
+  private generateTypingEffects(data: any): void {
+    this.effects.add(new TextTyper(data.header, 91, "header"));
+    this.effects.add(new TextTyper(data.body, 82, "body"));
   }
 }
