@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ResumeEntry } from './resume-entries/resume-entry';
-import { MOCK_RESUME_ENTRIES } from './mockResume';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ResumeEntryService {
+  private RESUME_URL = 'api/resumeEntries';
 
-  constructor() { }
+  constructor( private http: HttpClient, ) { }
 
   getEntries(): Observable<ResumeEntry[]> {
-    return of(MOCK_RESUME_ENTRIES);
+    const resumes = this.http.get<ResumeEntry[]>(this.RESUME_URL);
+    return resumes;
   }
 
 }
