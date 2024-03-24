@@ -1,0 +1,10 @@
+<img 
+    class="pointer"
+    [ngSrc]="args.src" [width]="args.dim.x" [height]="args.dim.y" sizes="100vw"
+    [ngStyle]="{
+        'transform': 
+        'translateX(' +args.transform?.translate?.x + '%)' +
+        'translateY(' +args.transform?.translate?.y + '%)' +
+        'rotate(' + args.transform?.rotate + 'deg)'
+}">
+

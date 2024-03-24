@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CardArgs } from '../card/card.component';
+import { ImageArgs } from '../Graphics/image/image.component';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,13 @@ import { CardArgs } from '../card/card.component';
 })
 export class HeaderComponent {
 
-  public imageScale: number = 64 * 1.4;
+  public logoImageArgs: ImageArgs = {
+    src: "assets/flwr-high.png",
+    dim: {x: 64, y: 64},
+    scale: 1.4,
+    pointer: true,
+    transform: {}
+  } 
 
   public headerLinkList: HeaderRouteLink[] = [
     {route: '/AboutMe', cardArgs: this.getHeaderCardArgs("About Me")},
