@@ -10,15 +10,17 @@ export class ImageComponent implements OnInit{
  
   @Input({required: true}) args!: ImageArgs;
   
-  ngOnInit(): void {
-    if(this.args.scale) {
-      this.args.dim.x *= this.args.scale;
-      this.args.dim.y *= this.args.scale;
+  public x: number = 1;
+  public y: number = 1;
 
-      console.log(this.args.transform);
+  ngOnInit(): void {
+    this.x = this.args.dim.x;
+    this.y = this.args.dim.y;
+    if(this.args.scale) {
+      this.x *= this.args.scale;
+      this.y *= this.args.scale;
     }
   }
-  
 }
 
 
@@ -27,5 +29,12 @@ export interface ImageArgs{
   dim: Dimension;
   scale?: number;
   pointer?: boolean;
+  filters?: ImageFilters;
   transform?: Transform2D;
+}
+
+interface ImageFilters{
+  greyScale?: number;
+  brightness?: number;
+  invert?: number;
 }

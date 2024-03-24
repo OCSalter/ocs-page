@@ -1,10 +1,13 @@
 <img 
     class="pointer"
-    [ngSrc]="args.src" [width]="args.dim.x" [height]="args.dim.y" sizes="100vw"
+    [ngSrc]="args.src" [width]="x" [height]="y" sizes="100vw"
+    [style.filter]="
+        'brightness('+ args.filters?.brightness + ')' + 
+        'invert('+ args.filters?.invert+')'"
     [ngStyle]="{
         'transform': 
         'translateX(' +args.transform?.translate?.x + '%)' +
         'translateY(' +args.transform?.translate?.y + '%)' +
-        'rotate(' + args.transform?.rotate + 'deg)'
-}">
-
+        'rotate(' + args.transform?.rotate + 'deg);',
+    }"
+>

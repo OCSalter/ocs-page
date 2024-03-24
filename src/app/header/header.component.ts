@@ -12,7 +12,7 @@ export class HeaderComponent {
   public logoImageArgs: ImageArgs = {
     src: "assets/flwr-high.png",
     dim: {x: 64, y: 64},
-    scale: 1.4,
+    scale: 1.0,
     pointer: true,
     transform: {}
   } 

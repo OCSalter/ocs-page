@@ -1,7 +1,6 @@
-<div class = "card" 
-    [style.width.vmin] = "args.width"
-    [style.aspect-ratio] = "args.aspectRatio">
-    <div class="card-content">
+<div class = "card" [style.width.vmin] = "args.width" [style.aspect-ratio] = "args.aspectRatio">
+    <div class="card-content-dots">
+        <div class="card-image" *ngIf="args.imageArgs"><app-image [args]="args.imageArgs"></app-image></div>
         <button class = "card-button" (click)="onClick()" pointer-events: auto>
             <h3 [style.font-size.vmin]="args.titleSize" class="card-title">{{args.titleText}}</h3>
             <h4 [style.font-size.vmin]="args.subtitleSize" class="card-subtitle">{{args.subtitleText}}</h4>

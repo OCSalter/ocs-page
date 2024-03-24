@@ -7,6 +7,7 @@ import { TextTyper } from '../IO/TextTyper';
 import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
 import { Paragraph } from '../Paragraph';
 import { CardArgs } from '../card/card.component';
+import { ImageArgs } from '../Graphics/image/image.component';
 
 
 @Component({
@@ -16,25 +17,10 @@ import { CardArgs } from '../card/card.component';
 })
 export class LandingPageComponent implements OnInit {
 
-  private LANDING_TEXT_URL = "api/paragraphs/landing";
-
-  public cardArgs: CardArgs = {
-    width: 50,
-    aspectRatio: (1/1.6),
-    titleSize: 9,
-    subtitleSize: 3,
-    titleText: "click: me",
-    subtitleText: "",
-  };
+  public cardArgs: CardArgs = CARD_ARGS;
   
   private effectList: Queue<TextTyper> = new Queue();
   private previousEffect?: TextTyper;
-  
-  private htmlIDMap = new Map<string, string>([
-      ["header","Landing_Header"],
-      ["body","Landing_Body"],
-      ["sub","Landing_Sub"],
-  ]);
 
   constructor( private http: HttpClient, ) { }
 
@@ -46,7 +32,7 @@ export class LandingPageComponent implements OnInit {
     const effect = this.effectList.pop(); 
     if(effect){
       this.previousEffect?.nextStarted();
-      const id = this.htmlIDMap.get(effect.getID());
+      const id = htmlIDMap.get(effect.getID());
       if(id){
         effect.start(new InnerHTMLWriter(document.getElementById(id)));
       }
@@ -55,7 +41,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   private generateEffects(): void {
-    const text = this.http.get<Paragraph>(this.LANDING_TEXT_URL);
+    const text = this.http.get<Paragraph>(LANDING_TEXT_URL);
     text.subscribe( _ => {
       this.generateTypingEffects(_);
     });
@@ -67,3 +53,28 @@ export class LandingPageComponent implements OnInit {
   }
 
 }
+
+const LANDING_TEXT_URL = "api/paragraphs/landing";
+
+const IMAGEARGS: ImageArgs = {
+  src:"assets/flwr-high.png",
+  dim: {x: 500, y: 500},
+  scale: 1,
+  filters: {brightness: 0, invert: 1},
+} 
+
+const CARD_ARGS: CardArgs = {
+  width: 50,
+  aspectRatio: (1/1.6),
+  titleSize: 9,
+  subtitleSize: 3,
+  titleText: "click: me",
+  subtitleText: "",
+  imageArgs: IMAGEARGS
+};
+
+const htmlIDMap = new Map<string, string>([
+  ["header","Landing_Header"],
+  ["body","Landing_Body"],
+  ["sub","Landing_Sub"],
+]);

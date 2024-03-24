@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, input, Input } from '@angular/core';
+import { ImageArgs } from '../Graphics/image/image.component';
 
 @Component({
   selector: 'app-card',
@@ -10,6 +11,8 @@ export class CardComponent {
 
   @Output() clickedEvent = new EventEmitter<void>();
 
+  public backgroundType: number = 1;
+
   onClick(): void { this.clickedEvent.emit() }
 }
 
@@ -20,4 +23,5 @@ export interface CardArgs{
   subtitleSize?: number;
   titleText?: string;
   subtitleText?: string;
-}
+  imageArgs?: ImageArgs;
+} 

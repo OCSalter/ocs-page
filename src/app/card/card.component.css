@@ -23,25 +23,42 @@
    background-position: 100% 100%;
 }
 
-.card-content{
+.card-content-image,
+.card-content-dots
+{
+    background-position: 0% 0%;
+    height:calc(100%);
+    position: relative;
+    width: calc(100%);
+    z-index: 2;
+}
+
+.card-content-dots{
     background: radial-gradient(
         rgba(255, 255, 255, 0.2) 8%,
         transparent 8%
     );
-    background-position: 0% 0%;
     background-size: 5vmin 5vmin;
-    height:calc(100%);
-    position: relative;
     transition: background-position 350ms ease;
-    width: calc(100%);
-    z-index: 2;
+}
+
+
+.card-image,
+.card-button{
+    height: 100%;
+    width: 100%;
+    position:absolute;
+}
+.card-image{
+    align-self: center;
+    align-items: center;
+    z-index: 3;
 }
 
 .card-button{
     background: transparent;
     pointer-events: auto;
-    height: 100%;
-    width: 100%;
+    z-index: 10;
 }
 
 .card-title,

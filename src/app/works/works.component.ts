@@ -11,6 +11,6 @@ export class WorksComponent {
     src:"assets/flwr-high.png",
     dim: {x: 1000, y: 1000},
     scale: 5/10,
-    transform: {translate:{x:30, y: 30},}
+    transform: {translate:{x:200, y: 100}, rotate: 90},
   }
 }
