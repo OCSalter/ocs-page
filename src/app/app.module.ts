@@ -11,6 +11,9 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { CardComponent } from './card/card.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InMemoryDataService } from './in-memory-data.service';
+import { ImageComponent } from './Graphics/image/image.component';
+import { NgOptimizedImage } from '@angular/common';
+import { WorksComponent } from './works/works.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     AboutMeComponent,
     CardComponent,
     LandingPageComponent,
+    ImageComponent,
+    WorksComponent,
     
   ],
   imports: [
@@ -26,6 +31,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppRoutingModule,
     ResumeEntriesComponent,
     HttpClientModule,
+    NgOptimizedImage,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),

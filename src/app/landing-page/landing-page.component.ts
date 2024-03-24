@@ -7,7 +7,6 @@ import { TextTyper } from '../IO/TextTyper';
 import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
 import { Paragraph } from '../Paragraph';
 import { CardArgs } from '../card/card.component';
-import { generateFaces } from './Faces';
 
 
 @Component({
@@ -43,13 +42,6 @@ export class LandingPageComponent implements OnInit {
     this.generateEffects();
   }
 
-  private generateEffects(): void {
-    const text = this.http.get<Paragraph>(this.LANDING_TEXT_URL);
-    text.subscribe( _ => {
-      this.generateTypingEffects(_);
-    });
-  }
-
   public playEffect(): void {
     const effect = this.effectList.pop(); 
     if(effect){
@@ -60,6 +52,13 @@ export class LandingPageComponent implements OnInit {
       }
     }
    this.previousEffect = effect;
+  }
+
+  private generateEffects(): void {
+    const text = this.http.get<Paragraph>(this.LANDING_TEXT_URL);
+    text.subscribe( _ => {
+      this.generateTypingEffects(_);
+    });
   }
   
   private generateTypingEffects(data: any): void {
