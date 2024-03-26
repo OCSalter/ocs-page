@@ -6,15 +6,11 @@ export class Option<T> implements Monad<T>{
 
     constructor(private item : T | undefined) {}
 
-    public static Some(_: any): Option<any> {
-        return new Option<any>(_);
-    }
-
     public flatMap<A>( f: (_: T) => A) : Option<A> {
         return new Option<A>(this.item ? f(this.item) : undefined);
     }
 
-    get(): T | undefined{
+    get(): T | undefined {
         return this.item;
     }
 }
