@@ -38,21 +38,28 @@
         rgba(255, 255, 255, 0.2) 8%,
         transparent 8%
     );
-    background-size: 5vmin 5vmin;
-    transition: background-position 350ms ease;
+    background-size: 3vmin 3vmin;
+    transition: background-position 700ms ease;
+    background-position: 10% 0;
 }
 
-
-.card-image,
+.card-image-container,
 .card-button{
     height: 100%;
     width: 100%;
     position:absolute;
 }
-.card-image{
+.card-image-container{
     align-self: center;
     align-items: center;
     z-index: 3;
+}
+
+.card-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    filter: brightness(0) invert(1);
 }
 
 .card-button{
@@ -77,7 +84,7 @@
     
 }
 
-.card:hover > .card-content {
+.card:hover > .card-content-dots {
     background-position: -10% 0;
 }
 

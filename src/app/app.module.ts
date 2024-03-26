@@ -11,7 +11,6 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { CardComponent } from './card/card.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InMemoryDataService } from './in-memory-data.service';
-import { ImageComponent } from './Graphics/image/image.component';
 import { NgOptimizedImage } from '@angular/common';
 import { WorksComponent } from './works/works.component';
 
@@ -22,7 +21,6 @@ import { WorksComponent } from './works/works.component';
     AboutMeComponent,
     CardComponent,
     LandingPageComponent,
-    ImageComponent,
     WorksComponent,
     
   ],

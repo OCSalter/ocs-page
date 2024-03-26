@@ -9,3 +9,7 @@ li {
   float: left;
   padding-right: 1vmin;
 }
+
+.header-image{
+  cursor: pointer;
+}

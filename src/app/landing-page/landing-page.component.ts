@@ -7,7 +7,8 @@ import { TextTyper } from '../IO/TextTyper';
 import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
 import { Paragraph } from '../Paragraph';
 import { CardArgs } from '../card/card.component';
-import { ImageArgs } from '../Graphics/image/image.component';
+import { generateFaces } from './Faces';
+import { ImageArgs } from '../Graphics/ImageArgs';
 
 
 @Component({
@@ -58,9 +59,7 @@ const LANDING_TEXT_URL = "api/paragraphs/landing";
 
 const IMAGEARGS: ImageArgs = {
   src:"assets/flwr-high.png",
-  dim: {x: 500, y: 500},
-  scale: 1,
-  filters: {brightness: 0, invert: 1},
+  dim: {x: 500, y: 500}
 } 
 
 const CARD_ARGS: CardArgs = {
