@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CardArgs } from '../card/card.component';
-import { ImageArgs } from '../Graphics/image/image.component';
+import { ImageArgs } from '../Graphics/ImageArgs';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +12,6 @@ export class HeaderComponent {
   public logoImageArgs: ImageArgs = {
     src: "assets/flwr-high.png",
     dim: {x: 64, y: 64},
-    scale: 1.0,
-    pointer: true,
-    transform: {}
   } 
 
   public headerLinkList: HeaderRouteLink[] = [
@@ -23,12 +20,13 @@ export class HeaderComponent {
     {route: '/Works', cardArgs: this.getHeaderCardArgs("My Works")},
   ];
 
-  private getHeaderCardArgs(title: string){
+  private getHeaderCardArgs(title: string): CardArgs{
     return {
       width: 17,
       aspectRatio: (3/1.5),
       titleSize: 2,
       titleText: title,
+      imageArgs: this.logoImageArgs
     };
   }
   

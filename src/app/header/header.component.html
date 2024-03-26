@@ -1,6 +1,6 @@
 <nav>
     <ul>
-        <li><app-image [args]="logoImageArgs" routerLink="/Home"></app-image></li>
+        <li><img class="header-image" [src]="logoImageArgs.src" [width]="logoImageArgs.dim.x" [height]="logoImageArgs.dim.y" routerLink="/Home"></li>
         <li *ngFor="let headerLink of headerLinkList">
             <app-card [args]="headerLink.cardArgs" routerLink="{{headerLink.route}}"></app-card>
         </li>

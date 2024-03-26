@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, input, Input } from '@angular/core';
-import { ImageArgs } from '../Graphics/image/image.component';
+import { ImageArgs } from '../Graphics/ImageArgs';
 
 @Component({
   selector: 'app-card',
