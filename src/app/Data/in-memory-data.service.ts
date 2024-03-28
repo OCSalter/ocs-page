@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
-import { ResumeEntry } from './resume-entries/resume-entry';
-import { MOCK_RESUME_ENTRIES } from './mockResume';
-import { Paragraph } from './Paragraph';
+import { ResumeEntry } from '../resume-entries/resume-entry';
+import { MOCK_RESUME_ENTRIES } from '../mockResume';
+import { Paragraph } from '../Paragraph';
 
 @Injectable({
   providedIn: 'root'

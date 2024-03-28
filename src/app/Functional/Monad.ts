@@ -52,6 +52,13 @@ export class Either<T> {
     }
 }
 
+export function GenerateEither<T>(_: T | Error | undefined): Either<T> {
+    if(!_ || _ instanceof Error){
+        return Left<T>(_);
+    }
+    return Right<T>(_);
+} 
+
 export function Right<T>(_: T): Either<T> {
     return new Either<T>(_, undefined);
 }

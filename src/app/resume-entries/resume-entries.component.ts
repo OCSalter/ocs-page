@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 
 import { ResumeEntry } from './resume-entry';
-import { ResumeEntryService } from '../resume-entry.service';
+import { ResumeEntryService } from '../Data/Structures/resume-entry.service';
+import { Either } from '../Functional/Monad';
 
 @Component({
   selector: 'app-resume-entries',
@@ -22,6 +23,9 @@ export class ResumeEntriesComponent implements OnInit {
   }
 
   getEntries(): void {
-    this.resumeEntryService.getEntries().subscribe( _ => this.entries = _);
+    this.resumeEntryService.getEntryList().subscribe((_: Either<ResumeEntry[]>) => 
+      _.map(
+        (entryList: ResumeEntry[]) => this.entries = entryList
+      ));
   }
 }
