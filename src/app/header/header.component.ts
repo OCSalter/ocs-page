@@ -12,7 +12,11 @@ export class HeaderComponent {
   public logoImageArgs: ImageArgs = {
     src: "assets/flwr-high.png",
     dim: {x: 64, y: 64},
-  } 
+  }
+  public listImageArgs: ImageArgs = {
+    src: "assets/path.png",
+    dim: {x: 64, y: 64}
+  }
 
   public headerLinkList: HeaderRouteLink[] = [
     {route: '/AboutMe', cardArgs: this.getHeaderCardArgs("About Me")},
@@ -26,7 +30,7 @@ export class HeaderComponent {
       aspectRatio: (3/1.5),
       titleSize: 2,
       titleText: title,
-      imageArgs: this.logoImageArgs
+      imageArgs: this.listImageArgs
     };
   }
   
