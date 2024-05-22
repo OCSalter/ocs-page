@@ -14,7 +14,7 @@ export class InMemoryDataService implements InMemoryDbService{
   createDb() {
     const resumeEntries: ResumeEntry[] = MOCK_RESUME_ENTRIES;
     const paragraphs: Paragraph[] = [
-      {id: "landing", header: "hiiiiiii ! >_< how are you ?", body: "Welcome to my website ! Hope you like it here :3"},
+      {id: "landing", header: "heeyyyy ! :) how are you ? ", body: "Welcome to my website ! Hope you like it here >_<"},
       {id: "aboutMe", header: "About Me", body:"Hey, my name is Owen Salter. I'm a passionate and driven software engineer."},
     ];
     const workEntries: Paragraph[] = [
