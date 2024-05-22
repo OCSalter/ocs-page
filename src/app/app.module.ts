@@ -13,6 +13,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InMemoryDataService } from './Data/in-memory-data.service';
 import { NgOptimizedImage } from '@angular/common';
 import { WorksComponent } from './works/works.component';
+import { ColourPickerComponent } from './colour-picker/colour-picker.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { WorksComponent } from './works/works.component';
     CardComponent,
     LandingPageComponent,
     WorksComponent,
+    ColourPickerComponent,
     
   ],
   imports: [

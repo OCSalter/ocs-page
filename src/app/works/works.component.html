@@ -1,0 +1,16 @@
+<div class="row" >
+    <div class="column">
+        <div class ="scroll-container">
+            <ul class= "scroll-list" >
+                <li *ngFor="let title of titleList">
+                    <span class="work-entrie" (click) ="clickEntry(title.id)">{{title.header}}</span>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="column">
+        <div class="work-entry-display">{{selectedText}}</div>
+    </div>
+</div>    
+

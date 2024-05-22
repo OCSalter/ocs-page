@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChange } from '@angular/core';
 import { CardArgs } from '../card/card.component';
 import { ImageArgs } from '../Graphics/ImageArgs';
+import { ColourPaletteService } from '../colour-palette.service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,15 @@ import { ImageArgs } from '../Graphics/ImageArgs';
 })
 export class HeaderComponent {
 
-  public logoImageArgs: ImageArgs = {
-    src: "assets/flwr-high.png",
+  constructor(private colourPaletteService: ColourPaletteService) {
+    this.colourPaletteService.signUp(this.logoImage);
+  }
+
+  public logoImage: ImageArgs = {
+    src: "assets/flwr-mid.png",
     dim: {x: 64, y: 64},
   }
+
   public listImageArgs: ImageArgs = {
     src: "assets/path.png",
     dim: {x: 64, y: 64}
@@ -24,7 +30,7 @@ export class HeaderComponent {
     {route: '/Works', cardArgs: this.getHeaderCardArgs("My Works")},
   ];
 
-  private getHeaderCardArgs(title: string): CardArgs{
+  private getHeaderCardArgs(title: string): CardArgs {
     return {
       width: 17,
       aspectRatio: (3/1.5),

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, input, Input } from '@angular/core';
+import { Component, Output, EventEmitter, input, Input, OnInit } from '@angular/core';
 import { ImageArgs } from '../Graphics/ImageArgs';
 
 @Component({

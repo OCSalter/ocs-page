@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResumeEntry } from '../../resume-entries/resume-entry';
 import { HttpService } from '../http.service';
+import { Paragraph } from '../../Paragraph';
 import { Either } from '../../Functional/Monad';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ResumeEntryService {
-  private RESUME_URL = 'api/resumeEntries';
+export class WorkEntryService {
+  private WORK_ENTRY_URL = 'api/workEntries';
 
   constructor( private httpService: HttpService ) { }
+  
 
-  getEntryList(): Observable<Either<ResumeEntry[]>> {
-    return this.httpService.getEntryList<ResumeEntry>(this.RESUME_URL);
+  getEntryList(): Observable<Either<Paragraph[]>> {
+    return this.httpService.getEntryList<Paragraph>(this.WORK_ENTRY_URL);
   }
-
 }

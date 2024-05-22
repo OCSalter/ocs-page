@@ -17,6 +17,15 @@ export class InMemoryDataService implements InMemoryDbService{
       {id: "landing", header: "hiiiiiii ! >_< how are you ?", body: "Welcome to my website ! Hope you like it here :3"},
       {id: "aboutMe", header: "About Me", body:"Hey, my name is Owen Salter. I'm a passionate and driven software engineer."},
     ];
-    return {resumeEntries, paragraphs};
+    const workEntries: Paragraph[] = [
+      {id: "1", header: "This Page", body: "paggeee"},
+      {id: "2", header: "Pose-DCGAN", body: "pose generator.."},
+      {id: "3", header: "smth", body: "Welcome to my website ! Hope you like it here :3"},
+      {id: "4", header: "This Page Again", body: "again"},
+      {id: "5", header: "This Page Again Again Again", body: "Again Again Again"},
+      {id: "6", header: "This Page Again Again Again Again...", body: "Again Again Again Again!!!!"},
+    ];
+    
+    return {resumeEntries, paragraphs, workEntries};
   }
 }

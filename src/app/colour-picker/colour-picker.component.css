@@ -1,0 +1,62 @@
+
+.palette-container {
+    padding-left: 20vmin;
+    aspect-ratio: 1;
+    height: 5vmin;
+    cursor: pointer;
+    position: absolute;
+}
+
+.palette-icon {
+    position: absolute;
+    opacity: 1;
+    width: 6vmin;
+    aspect-ratio: 1;
+    transition: opacity 50ms ease;
+    z-index: 1;
+}
+
+.palette-popout {
+    position: absolute;
+    left: 10vmin;
+    aspect-ratio: 1;
+    height: 15vmin;
+    opacity: 0;
+    transition: opacity 100ms ease;
+    z-index: 5;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 5vmin);
+    grid-gap: 1vmin;
+}
+
+.colour-box {
+    cursor: pointer;
+    height: 5vmin;
+    width: 5vmin;
+}
+
+.box-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    width: 100%;
+    opacity: 0;
+    transition:opacity 200ms;
+    filter: brightness(0) invert(1);
+}
+
+.palette-container:hover > .palette-popout {
+    opacity: 1;
+}
+
+.palette-container:hover > .palette-icon {
+    opacity: 0;
+}
+
+.colour-box:hover > .box-image {
+    opacity: 1;
+}

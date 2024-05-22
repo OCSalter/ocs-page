@@ -4,7 +4,7 @@ export interface Monad<T>{
 
 export class Option<T>{
 
-    constructor(private item : T | undefined) {}
+    constructor(private item : T | undefined | null) {}
 
     public map<A>(f: (_: T) => A): Option<A> {
         return this.item ? new Option(f(this.item)) : None<A>();
@@ -14,12 +14,12 @@ export class Option<T>{
         return this.item ? f(this.item) : None<A> ();
     } 
 
-    get(): T | undefined {
+    get(): T | undefined | null {
         return this.item;
     }
 }
 
-export function Some<T>(_: T): Option<T> {
+export function Some<T>(_: T | undefined | null): Option<T> {
     return new Option<T>(_);
 }
 

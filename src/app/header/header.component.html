@@ -1,8 +1,13 @@
-<nav>
-    <ul>
-        <li><img class="header-image" [src]="logoImageArgs.src" [width]="logoImageArgs.dim.x" [height]="logoImageArgs.dim.y" routerLink="/Home"></li>
-        <li *ngFor="let headerLink of headerLinkList">
-            <app-card [args]="headerLink.cardArgs" routerLink="{{headerLink.route}}"></app-card>
-        </li>
-    </ul>
-</nav>
+<div class ="row">
+    <div class="column"><nav>
+        <ul>
+            <li><div class="image-container"><img class="header-image" [src]="logoImage.src" routerLink="/Home"></div></li>
+            <li *ngFor="let headerLink of headerLinkList">
+                <app-card [args]="headerLink.cardArgs" routerLink="{{headerLink.route}}"></app-card>
+            </li>
+        </ul>
+    </nav></div>
+    <div class="column">
+        <div class="theme-container"><app-colour-picker></app-colour-picker></div>
+    </div>
+</div>

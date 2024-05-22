@@ -7,8 +7,9 @@ import { TextTyper } from '../IO/TextTyper';
 import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
 import { Paragraph } from '../Paragraph';
 import { CardArgs } from '../card/card.component';
-import { generateFaces } from './Faces';
 import { ImageArgs } from '../Graphics/ImageArgs';
+import { ColourPaletteService } from '../colour-palette.service';
+
 
 
 @Component({
@@ -18,14 +19,13 @@ import { ImageArgs } from '../Graphics/ImageArgs';
 })
 export class LandingPageComponent implements OnInit {
 
-  public cardArgs: CardArgs = CARD_ARGS;
-  
+  constructor( private http: HttpClient, private colorPaletteService: ColourPaletteService) {}
+
   private effectList: Queue<TextTyper> = new Queue();
   private previousEffect?: TextTyper;
 
-  constructor( private http: HttpClient, ) { }
-
   ngOnInit(): void {
+    this.colorPaletteService.signUp(this.themeIcon);
     this.generateEffects();
   }
 
@@ -53,24 +53,25 @@ export class LandingPageComponent implements OnInit {
     this.effectList.add(new TextTyper(data.body, 82, "body"));
   }
 
+  private themeIcon: ImageArgs = {
+    src:"assets/flwr-mid.png",
+    dim: {x: 500, y: 500},
+    horizontalTransform:-12.5,
+  } 
+  
+  public cardArgs: CardArgs = {
+    width: 50,
+    aspectRatio: (1/1.6),
+    titleSize: 9,
+    subtitleSize: 3,
+    titleText: "click: me",
+    subtitleText: "",
+    imageArgs: this.themeIcon
+  };
+
 }
 
 const LANDING_TEXT_URL = "api/paragraphs/landing";
-
-const IMAGEARGS: ImageArgs = {
-  src:"assets/flwr-high.png",
-  dim: {x: 500, y: 500}
-} 
-
-const CARD_ARGS: CardArgs = {
-  width: 50,
-  aspectRatio: (1/1.6),
-  titleSize: 9,
-  subtitleSize: 3,
-  titleText: "click: me",
-  subtitleText: "",
-  imageArgs: IMAGEARGS
-};
 
 const htmlIDMap = new Map<string, string>([
   ["header","Landing_Header"],

@@ -1,9 +1,9 @@
-<div class = "card" [style.width.vmin] = "args.width" [style.aspect-ratio] = "args.aspectRatio">
-    <div class="card-content-dots">
-        <div class="card-image-container" *ngIf="args.imageArgs"><img class="card-image" [src]="args.imageArgs.src" [width]="args.imageArgs.dim.x" [height]="args.imageArgs.dim.y"></div>
-        <button class = "card-button" (click)="onClick()" pointer-events: auto>
-            <h3 [style.font-size.vmin]="args.titleSize" class="card-title">{{args.titleText}}</h3>
-            <h4 [style.font-size.vmin]="args.subtitleSize" class="card-subtitle">{{args.subtitleText}}</h4>
-        </button>
-    </div>
+<div class = "card"  [style.width.vmin] = "args.width" [style.aspect-ratio] = "args.aspectRatio">
+    <div class="card-gradient"></div>
+    <div class="card-dots"></div>
+    <div class="card-image-container" *ngIf="args.imageArgs"><img class="card-image" [src]="args.imageArgs.src" [ngStyle]="{'transform':'translateX(' + args.imageArgs.horizontalTransform +'%)'}" ></div>
+    <button class = "card-button" (click)="onClick()" pointer-events: auto>
+        <h3 [style.font-size.vmin]="args.titleSize" class="card-title">{{args.titleText}}</h3>
+        <h4 [style.font-size.vmin]="args.subtitleSize" class="card-subtitle">{{args.subtitleText}}</h4>
+    </button>
 </div> 
