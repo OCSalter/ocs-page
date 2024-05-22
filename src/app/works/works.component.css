@@ -1,0 +1,21 @@
+.scroll-container{
+    overflow: scroll;
+   
+}
+
+.scroll-list{
+    list-style-type: none;
+}
+
+.work-entrie{
+    font-size: 5vmin;
+    cursor:pointer;
+}
+
+.work-entry-display{
+    font-size: 2vmin;
+}
+
+.work-entry-link{
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+
+<div class="palette-container">
+    <img class="palette-icon" src="assets/menu.png">
+    <div class="palette-popout">
+        <div class="grid-container">
+            <ng-container *ngFor="let colourEntrie of displayPalette">
+                <div class="colour-box" [style.background]="colourEntrie.colourHex" (click)="selectColour(colourEntrie.colourId)"><img class="box-image" src="assets/flwr-mid.png"></div>
+            </ng-container>
+        </div>
+    </div>
+    
+</div>
+
+

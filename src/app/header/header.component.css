@@ -10,6 +10,18 @@ li {
   padding-right: 1vmin;
 }
 
-.header-image{
+.header-image {
   cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+.image-container{
+  width: 9vmin;
+  aspect-ratio: 1;
+}
+
+.theme-container{
+  padding-left: 50vmin;
+  size: 100%;
+  justify-content: center;
 }

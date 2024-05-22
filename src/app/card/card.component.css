@@ -5,35 +5,26 @@
     pointer-events: none; 
 }
 
-.card:before{
-    background: linear-gradient(130deg, transparent 0% 45%,#FB62F6 66%);
-    content:"";
+.card-gradient,
+.card-dots,
+.card-image-container,
+.card-button{
+    align-self: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.card-gradient{
+    background: linear-gradient(130deg, transparent 0% 45%, var(--themeColour) 66%);
     background-position: 0% 0%;
     background-size: 300% 300%;
-    height: 100%;
-    left: 0px;
-    position: absolute;
-    top: 0px;
     transition: background-position 400ms;
-    width: 100%;
     z-index: 1;
 }
 
-.card:hover:before{
-   background-position: 100% 100%;
-}
-
-.card-content-image,
-.card-content-dots
-{
-    background-position: 0% 0%;
-    height:calc(100%);
-    position: relative;
-    width: calc(100%);
-    z-index: 2;
-}
-
-.card-content-dots{
+.card-dots{
     background: radial-gradient(
         rgba(255, 255, 255, 0.2) 8%,
         transparent 8%
@@ -41,31 +32,29 @@
     background-size: 3vmin 3vmin;
     transition: background-position 700ms ease;
     background-position: 10% 0;
+    z-index: 2;
 }
 
-.card-image-container,
-.card-button{
-    height: 100%;
-    width: 100%;
-    position:absolute;
-}
 .card-image-container{
-    align-self: center;
-    align-items: center;
     z-index: 3;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-image{
     display: block;
+    align-self: center;
     margin-left: auto;
     margin-right: auto;
+    height: 90%;
+    aspect-ratio: 1;
     filter: brightness(0) invert(1);
 }
 
 .card-button{
     background: transparent;
     pointer-events: auto;
-    z-index: 10;
+    z-index: 4;
 }
 
 .card-title,
@@ -76,15 +65,19 @@
 }
 
 .card-title{
-    color: #FB62F6;
+    color: var(--themeColour);
     
 }
 .card-subtitle{
     color:  white;
-    
 }
 
-.card:hover > .card-content-dots {
+.card:hover > .card-gradient{
+    background-position: 100% 100%;
+}
+
+
+.card:hover > .card-dots{
     background-position: -10% 0;
 }
 

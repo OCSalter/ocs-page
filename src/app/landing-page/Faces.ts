@@ -1,6 +1,6 @@
 const HORIZONTAL_EYES = [':', ';', '=', '8','X', ];
 const HORIZONTAL_MOUTH = [')', '}', '>', 'D', ']', '/', '|', '7', '3', ];
-const FACES = ['◡̈', 'ㅤᵕ̈', '•ᴗ•', '˶ᵔ ᵕ ᵔ˶', '(,,> ᴗ <,,)', '૮ ˶ᵔ ᵕ ᵔ˶ ა', '( ^ 〰 ^) ', '₍ᐢ.  ̫.ᐢ₎', ];
+const FACES = ['◡̈', 'ㅤᵕ̈', '•ᴗ•', '˶ᵔ ᵕ ᵔ˶', '(,,> ᴗ <,,)', '૮ ˶ᵔ ᵕ ᵔ˶ ა', '( ^ 〰 ^) ', '₍ᐢ.  ̫.ᐢ₎', 'UwU' ];
 const HORIZONTAL_EYES_LENGTH = HORIZONTAL_EYES.length;
 const HORIZONTAL_MOUTH_LENGTH = HORIZONTAL_MOUTH.length;
 const FACES_LENGTH = FACES.length;

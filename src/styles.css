@@ -1,4 +1,8 @@
 /* Application-wide Styles */
+:root{
+  --themeColour: #FB62F6;
+}
+
 h1 {
     color: #369;
     font-family: Arial, Helvetica, sans-serif;
