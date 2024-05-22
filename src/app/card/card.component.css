@@ -61,12 +61,13 @@
 .card-subtitle {
     font-weight: 400;
     margin: 0px;
-    transition: color 300ms ease;
+    z-index: 10;
 }
 
 .card-title{
+    transition: color 300ms ease, background-color 300ms ease;
     color: var(--themeColour);
-    
+    background-color: transparent;
 }
 .card-subtitle{
     color:  white;
@@ -83,4 +84,5 @@
 
 .card-button:hover > .card-title {
     color:white;
+    background-color: var(--themeColour);
 }
