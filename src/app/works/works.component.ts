@@ -12,7 +12,7 @@ export class WorksComponent implements OnInit {
   public selectedId: string = "";
   public selectedText?: string;
 
-  public titleList: Paragraph[] = [];
+  public titleList: Paragraph [] = [];
 
   constructor(private workEntryService: WorkEntryService) {}
 

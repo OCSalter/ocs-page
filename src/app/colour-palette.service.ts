@@ -24,10 +24,7 @@ export class ColourPaletteService {
     [hunterGreen,"assets/chmny.png"],
   ])
 
-  private reference?: ImageArgs;
-
   private managedImages: ImageArgs[] = [];
-
   private selected: string = pink;
 
   constructor() { }
@@ -44,13 +41,27 @@ export class ColourPaletteService {
     return this.colourPalette;
   }
 
+  getImages(): Map<string, string> {
+    return this.themeImage;
+  }
+
+  getHexImage(): HexImage[] {
+    return Array.from(this.colourPalette.entries()).map(
+      _ => this.genHexImage(_[0], _[1], this.themeImage.get(_[0])));
+  }
+
+  private genHexImage(i: string, h: string, s?: string): HexImage {
+    return {id: i, hex: h, src: s};
+  }
+
   setColour(id: string): void {
     Some<string>(this.colourPalette.get(id)).map( 
       (hex: string) => Some<Document>(document).map(
           (doc: Document) => doc.documentElement.style.setProperty(themeId, hex)));
 
-    const url: Option<string> =  Some<string>(this.themeImage.get(id));
-    url.map((u: string) => this.managedImages.forEach(_ => _.src = u));
+    Some<string>(this.themeImage.get(id)).map(
+      (u: string) => this.managedImages.forEach(_ => _.src = u)
+    );
   }
 
   signUp(param: ImageArgs){
@@ -59,3 +70,9 @@ export class ColourPaletteService {
 }
 
 export type ColourPalette = Map<string, string>;
+
+export interface HexImage{
+  id: string;
+  hex: string;
+  src?: string;
+}

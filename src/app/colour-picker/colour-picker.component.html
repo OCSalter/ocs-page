@@ -3,8 +3,8 @@
     <img class="palette-icon" src="assets/menu.png">
     <div class="palette-popout">
         <div class="grid-container">
-            <ng-container *ngFor="let colourEntrie of displayPalette">
-                <div class="colour-box" [style.background]="colourEntrie.colourHex" (click)="selectColour(colourEntrie.colourId)"><img class="box-image" src="assets/flwr-mid.png"></div>
+            <ng-container *ngFor="let colourEntrie of displayHexImages">
+                <div class="colour-box" [style.background]="colourEntrie.hex" (click)="selectColour(colourEntrie.id)"><img class="box-image" [src]="colourEntrie.src"></div>
             </ng-container>
         </div>
     </div>

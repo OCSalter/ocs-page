@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColourPalette, ColourPaletteService } from '../colour-palette.service';
+import { ColourPalette, ColourPaletteService, HexImage } from '../colour-palette.service';
 
 @Component({
   selector: 'app-colour-picker',
@@ -8,11 +8,11 @@ import { ColourPalette, ColourPaletteService } from '../colour-palette.service';
 })
 export class ColourPickerComponent implements OnInit {
 
-  public displayPalette: colourData[] = [];
+  public displayHexImages: HexImage[] = [];
   constructor(private colourPaletteService: ColourPaletteService) {}
 
   ngOnInit(): void {
-    this.displayPalette = Array.from(this.colourPaletteService.getColours(), ([k, v]) => ({colourId: k, colourHex: v}));
+    this.displayHexImages = this.colourPaletteService.getHexImage();
   }
 
   selectColour(id: string) {
