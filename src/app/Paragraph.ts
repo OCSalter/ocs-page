@@ -3,4 +3,4 @@ export interface Paragraph{
     header?: string;
     body?: string;
     sub?: string;
-}
+}   

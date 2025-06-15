@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 
 import { Queue } from '../structures';
 import { HttpClient } from '@angular/common/http';
-
 import { TextTyper } from '../IO/TextTyper';
 import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
-import { Paragraph } from '../Paragraph';
 import { CardArgs } from '../card/card.component';
 import { ImageArgs } from '../Graphics/ImageArgs';
 import { ColourPaletteService } from '../colour-palette.service';
+import { UUID } from 'crypto';
+import { ParagraphService } from '../Data/Structures/paragraph.service';
 
-
+const homeTextId: UUID = '7c2ba3f6-1f70-42ed-ad2b-0e9e5768ba74';
 
 @Component({
   selector: 'app-landing-page',
@@ -19,7 +19,7 @@ import { ColourPaletteService } from '../colour-palette.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor( private http: HttpClient, private colorPaletteService: ColourPaletteService) {}
+  constructor( private http: HttpClient, private colorPaletteService: ColourPaletteService, private paragraphService: ParagraphService) {}
 
   private effectList: Queue<TextTyper> = new Queue();
   private previousEffect?: TextTyper;
@@ -42,10 +42,10 @@ export class LandingPageComponent implements OnInit {
   }
 
   private generateEffects(): void {
-    const text = this.http.get<Paragraph>(LANDING_TEXT_URL);
+    const text = this.paragraphService.getParagraphFromId(homeTextId);
     text.subscribe( _ => {
-      this.generateTypingEffects(_);
-    });
+        _.map(p => this.generateTypingEffects(p[0]))
+    })
   }
   
   private generateTypingEffects(data: any): void {
@@ -71,7 +71,7 @@ export class LandingPageComponent implements OnInit {
 
 }
 
-const LANDING_TEXT_URL = "api/paragraphs/landing";
+const LANDING_TEXT_URL = "http://localhost:4010/paragraphs/fromId/7c2ba3f6-1f70-42ed-ad2b-0e9e5768ba74";
 
 const htmlIDMap = new Map<string, string>([
   ["header","Landing_Header"],

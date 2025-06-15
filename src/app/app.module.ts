@@ -10,7 +10,7 @@ import { ResumeEntriesComponent } from './resume-entries/resume-entries.componen
 import { AboutMeComponent } from './about-me/about-me.component';
 import { CardComponent } from './card/card.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { InMemoryDataService } from './Data/in-memory-data.service';
+// import { InMemoryDataService } from './Data/in-memory-data.service';
 import { NgOptimizedImage } from '@angular/common';
 import { WorksComponent } from './works/works.component';
 import { ColourPickerComponent } from './colour-picker/colour-picker.component';
@@ -32,9 +32,9 @@ import { ColourPickerComponent } from './colour-picker/colour-picker.component';
     ResumeEntriesComponent,
     HttpClientModule,
     NgOptimizedImage,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // ),
   ],
   providers: [
     provideClientHydration()
