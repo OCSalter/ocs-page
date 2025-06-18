@@ -2,23 +2,23 @@
     <li *ngFor="let entry of entries">
         <div class="row" >
             <div class="column">
-                <span class="job-title">{{entry.title}},</span>
+                <span class="job-title">{{entry.header.title}},</span>
             </div>
             <div class="column">
-                <span class="job-date">{{entry.date}},</span>
+                <span class="job-date">{{entry.header.date}},</span>
             </div>
         </div>
         <div class="row" >
             <div class="column">
-                <span class="job-group">{{entry.group}},</span>
+                <span class="job-group">{{entry.header.group}},</span>
             </div>
             <div class="column">
-                <span class="job-location">{{entry.location}},</span>
+                <span class="job-location">{{entry.header.location}},</span>
             </div>
         </div>
         <ul class="entryPoints">
-            <li *ngFor ="let point of entry.points">
-                <span class="job-point">{{point}}</span>
+            <li *ngFor ="let point of entry.items">
+                <span class="job-point">{{point.text}}</span>
             </li>
         </ul>
     </li>

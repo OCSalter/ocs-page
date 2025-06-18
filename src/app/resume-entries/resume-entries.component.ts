@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 
-import { ResumeEntry } from './resume-entry';
+import { Resume } from './resume-entry';
 import { ResumeEntryService } from '../Data/Structures/resume-entry.service';
 import { Either } from '../Functional/Monad';
 
@@ -14,7 +14,7 @@ import { Either } from '../Functional/Monad';
 })
 
 export class ResumeEntriesComponent implements OnInit {
-  entries: ResumeEntry[] = [];
+  entries: Resume[] = [];
 
   constructor(private resumeEntryService: ResumeEntryService) {}
 
@@ -23,9 +23,9 @@ export class ResumeEntriesComponent implements OnInit {
   }
 
   getEntries(): void {
-    this.resumeEntryService.getEntryList().subscribe((_: Either<ResumeEntry[]>) => 
+    this.resumeEntryService.getEntryList().subscribe((_: Either<Resume[]>) => 
       _.map(
-        (entryList: ResumeEntry[]) => this.entries = entryList
+        (entryList: Resume[]) => this.entries = entryList
       ));
   }
 }
