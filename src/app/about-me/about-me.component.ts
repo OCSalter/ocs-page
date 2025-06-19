@@ -15,7 +15,7 @@ export class AboutMeComponent {
   constructor(  private http: HttpClient, ) {}
 
   ngOnInit(){
-    this.http.get<Paragraph>(this.URL).subscribe(result => this.aboutMe = result);
+    // this.http.get<Paragraph>(this.URL).subscribe(result => this.aboutMe = result);
   }
 
 }
