@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Queue } from '../structures';
-import { HttpClient } from '@angular/common/http';
 import { TextTyper } from '../IO/TextTyper';
 import { InnerHTMLWriter } from '../IO/InnerHTMLWriter';
 import { CardArgs } from '../card/card.component';
@@ -9,6 +8,7 @@ import { ImageArgs } from '../Graphics/ImageArgs';
 import { ColourPaletteService } from '../colour-palette.service';
 import { UUID } from 'crypto';
 import { ParagraphService } from '../Data/Structures/paragraph.service';
+import { Some } from '../Functional/Monad';
 
 const homeTextId: UUID = '7c2ba3f6-1f70-42ed-ad2b-0e9e5768ba74';
 
@@ -19,7 +19,7 @@ const homeTextId: UUID = '7c2ba3f6-1f70-42ed-ad2b-0e9e5768ba74';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor( private http: HttpClient, private colorPaletteService: ColourPaletteService, private paragraphService: ParagraphService) {}
+  constructor( private colorPaletteService: ColourPaletteService, private paragraphService: ParagraphService) {}
 
   private effectList: Queue<TextTyper> = new Queue();
   private previousEffect?: TextTyper;
@@ -30,15 +30,15 @@ export class LandingPageComponent implements OnInit {
   }
 
   public playEffect(): void {
-    const effect = this.effectList.pop(); 
-    if(effect){
+    Some(this.effectList.pop())
+    .map((effect: TextTyper) => {
       this.previousEffect?.nextStarted();
-      const id = htmlIDMap.get(effect.getID());
-      if(id){
-        effect.start(new InnerHTMLWriter(document.getElementById(id)));
-      }
-    }
-   this.previousEffect = effect;
+      Some(htmlIDMap.get(effect.getID()))
+      .map( id => 
+        effect.start(new InnerHTMLWriter(document.getElementById(id)))
+      );
+      this.previousEffect = effect;
+    });
   }
 
   private generateEffects(): void {
@@ -70,8 +70,6 @@ export class LandingPageComponent implements OnInit {
   };
 
 }
-
-const LANDING_TEXT_URL = "http://localhost:4010/paragraphs/fromId/7c2ba3f6-1f70-42ed-ad2b-0e9e5768ba74";
 
 const htmlIDMap = new Map<string, string>([
   ["header","Landing_Header"],
