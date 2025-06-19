@@ -83,6 +83,6 @@
 }
 
 .card-button:hover > .card-title {
-    color:white;
-    background-color: var(--themeColour);
+    transition: opacity 200ms ease;
+    opacity: 0.0;
 }
