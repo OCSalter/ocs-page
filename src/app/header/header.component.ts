@@ -27,7 +27,6 @@ export class HeaderComponent {
   public headerLinkList: HeaderRouteLink[] = [
     {route: '/AboutMe', cardArgs: this.getHeaderCardArgs("About Me")},
     {route: '/Resume', cardArgs: this.getHeaderCardArgs("Resume")},
-    {route: '/Works', cardArgs: this.getHeaderCardArgs("My Works")},
   ];
 
   private getHeaderCardArgs(title: string): CardArgs {
